@@ -43,11 +43,25 @@ function loaderAnimation() {
     opacity: 0,
     ease: "power2.inOut",
   });
+  tl2.to("#loader h3", {
+    delay: 0.5,
+    duration: 1,
+    x: -100,
+    stagger: 0.1,
+    opacity: 0,
+    ease: "power2.inOut",
+  });
   tl2.to("#loader", {
     duration: 1,
     opacity: 0,
     display: "none",
     ease: "power2.inOut",
+  });
+  tl2.from("#content h1 span", {
+    duration: 0.3,
+    opacity: 0,
+    y: 100,
+    stagger: 0.1,
   });
 }
 
@@ -93,8 +107,8 @@ function Page2Animations() {
     scrollTrigger: {
       trigger: "#elem",
       scroller: "#main",
-      start: "top 50%",
-      end: "top 40%",
+      start: "top 60%",
+      end: "top 30%",
       scrub: true,
     },
   });
@@ -102,33 +116,26 @@ function Page2Animations() {
   tl.from("#elem h3", {
     opacity: 0,
     x: 60,
-    stagger: 0.2,
-    duration: 2,
-  });
-
-  tl.from("#elem2 h3", {
-    opacity: 0,
-    x: 60,
-    stagger: 0.2,
+    stagger: 0.3,
     duration: 2,
   });
 
   tl.from("hr", {
     opacity: 0,
-    stagger: 0.2,
+    stagger: 0.3,
     duration: 2,
   });
 
   gsap.from("#hero h1", {
     opacity: 0,
     y: 120,
-    duration: 2,
-    stagger: 0.2,
+    duration: 3,
+    stagger: 2,
     scrollTrigger: {
       trigger: "#hero h1",
       scroller: "#main",
-      start: "top 50%",
-      end: "top 40%",
+      start: "top 70%",
+      end: "top 30%",
       scrub: true,
     },
   });
@@ -141,7 +148,8 @@ function SwiperJS() {
     spaceBetween: 30,
     loop: true,
     autoplay: {
-      delay: 2500,
+      delay: 2000,
+      duration: 1500,
       disableOnInteraction: false,
     },
   });
@@ -150,8 +158,54 @@ function SwiperJS() {
 SwiperJS();
 
 function Page3Animations() {
+  gsap.from("#container2 h4", {
+    x: 300,
+    opacity: 0,
+    duration: 0.3,
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: "#container2 h4",
+      scroller: "#main",
+      start: "top 80%",
+      end: "top 50%",
+      scrub: true,
+    },
+  });
+
+  gsap.from("#container2 .headings", {
+    x: -500,
+    opacity: 0,
+    duration: 0.2,
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: "#container2 .headings",
+      scroller: "#main",
+      start: "top 70%",
+      end: "top 40%",
+      scrub: true,
+    },
+  });
+
+  gsap.from("#container2 .box", {
+    scale: 0,
+    opacity: 0,
+    duration: 0.3,
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: "#container2 .box",
+      scroller: "#main",
+      start: "top 90%",
+      end: "top 40%",
+      scrub: true,
+    },
+  });
+}
+Page3Animations();
+
+function Page4Animations() {
   var page4 = document.querySelector(" #page4");
   var crsr = document.querySelector(".crsr");
+  var svg = document.querySelector("#video-content");
 
   page4.addEventListener("mousemove", (e) => {
     gsap.to(crsr, {
@@ -163,7 +217,23 @@ function Page3Animations() {
   });
 
   page4.addEventListener("mouseenter", (e) => {
-    gsap.to("#cursor", {
+    gsap.to(crsr, {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+    });
+  });
+
+  svg.addEventListener("mouseenter", (e) => {
+    gsap.to(crsr, {
+      duration: 0.5,
+      scale: 0,
+      opacity: 0,
+    });
+  });
+
+  svg.addEventListener("mouseleave", (e) => {
+    gsap.to(crsr, {
       duration: 0.5,
       scale: 1,
       opacity: 1,
@@ -171,7 +241,7 @@ function Page3Animations() {
   });
 
   page4.addEventListener("mouseleave", (e) => {
-    gsap.to("#cursor", {
+    gsap.to(crsr, {
       duration: 0.5,
       scale: 0,
       opacity: 0,
@@ -179,4 +249,4 @@ function Page3Animations() {
   });
 }
 
-Page3Animations();
+Page4Animations();
